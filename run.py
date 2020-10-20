@@ -1,7 +1,4 @@
 #!/usr/bin/env python
-"""
-A module for creating .pdf math worksheets
-"""
 
 __author__ = 'amit-bakhru'
 
@@ -160,9 +157,12 @@ class WorkSheetGenerator:
 @click.option('--end_num', is_flag=False, default=3000,
               help='Ending number for questions')
 @click.option('--tables', is_flag=True, default=True,
-              help='Flag to disable tables and start double-digit multiply')
+              help='Flag to enable double-digit multiplication')
 @click.help_option('-h', '--help')
 def cli(type, questions, start_num, end_num, tables):
+    """
+    A CLI app for creating HTML & PDF math worksheets
+    """
     WorkSheetGenerator(type, num_questions=questions,
                        start_num=start_num, end_num=end_num, tables=tables)
 

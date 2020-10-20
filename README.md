@@ -4,8 +4,8 @@
 - subtraction worksheet
 - multiplication worksheet
 - can specify to generate variable number of questions
-- all three worksheets can be generated together
-- saves the generated worksheet in colored HTML file
+- mix mode, generates all 3 types of questions worksheets
+- saves the generated worksheet in colored HTML file and PDF file
 - Randomized questions always, so its never the same set of questions
 
 ### To Run
@@ -15,19 +15,23 @@
 
 # Usage
 ```
-python worksheet_generator.py --help
-Usage: worksheet_generator.py [OPTIONS]
+Usage: run.py [OPTIONS]
+
+  A CLI app for creating HTML & PDF math worksheets
 
 Options:
-  -s, --subtract           Generate subtraction worksheet
-  -a, --add                Generate addition worksheet
-  -m, --multiply           Generate multiplication worksheet
-  -n, --questions INTEGER  Number of questions to generate
-  --help                   Show this message and exit.
+  -t, --type [+|-|x|mix]   type of calculation: +: Addition; -: Subtraction;
+                           x: Multiplication; mix: Mixed; (default: +)
+  -q, --questions INTEGER  Number of questions to generate
+  --start_num INTEGER      Starting number for questions
+  --end_num INTEGER        Ending number for questions
+  --tables                 Flag to enable double-digit multiplication
+  -h, --help               Show this message and exit.
 ```
 
 ### TODO
-- [ ] division worksheet
+- [ ] division worksheet support
+- [ ] exclude certain numbers support
 - [ ] support to generate answer key for the related worksheet
 - [ ] auto-evaluate and score the answer sheet based on hand-writing recognition model
-- [ ] support for start and end values as cli arguments1
+- [x] support for start and end values as cli arguments
