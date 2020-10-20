@@ -1,4 +1,4 @@
-### Simple script to generate mathematics worksheet for the following operations
+### Simple CLI application to generate mathematics worksheet for the following operations
 
 - addition worksheet
 - subtraction worksheet
@@ -30,3 +30,4 @@ Options:
 - [ ] division worksheet
 - [ ] support to generate answer key for the related worksheet
 - [ ] auto-evaluate and score the answer sheet based on hand-writing recognition model
+- [ ] support for start and end values as cli arguments1
