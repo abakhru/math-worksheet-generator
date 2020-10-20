@@ -13,7 +13,6 @@ import arrow
 import click
 import numpy as np
 import weasyprint
-from fpdf import FPDF
 from rich.console import Console
 from rich.logging import RichHandler
 from rich.table import Table
@@ -55,7 +54,6 @@ class WorkSheetGenerator:
         self.main_type = type_
         self.num_questions = num_questions
         self.tables = tables
-        self.pdf = FPDF()
         self.console = Console(record=True, width=100)
         self.rich_color_choices = RICH_COLOR_LIST
         self.today_date = arrow.now().format('YYYY-MM-DD')
