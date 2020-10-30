@@ -29,7 +29,7 @@ Options:
   -h, --help               Show this message and exit.
 ```
 - generate 10 double-digit multiplication questions starting from 12 to 99
-![Double-digit multiplication](static/screenshot_multiplication.png)
+![Double-digit multiplication](example/screenshot_multiplication.png)
 
 ### TODO
 - [ ] division worksheet support
