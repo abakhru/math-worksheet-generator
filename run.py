@@ -16,7 +16,8 @@ from rich.table import Table
 
 TABLES_DICT = {'+': 'addition',
                '-': 'subtraction',
-               'x': 'multiplication'}
+               'x': 'multiplication',
+               'mix': 'mix'}
 
 RICH_COLOR_LIST = ["red",
                    "blue",
@@ -51,13 +52,13 @@ class WorkSheetGenerator:
         self.main_type = type_
         self.num_questions = num_questions
         self.tables = tables
-        self.console = Console(record=True, width=100)
+        self.console = Console(record=True, width=120)
         self.rich_color_choices = RICH_COLOR_LIST
         self.today_date = arrow.now().format('YYYY-MM-DD')
         self.data_dir = Path(__file__).parent.joinpath('data')
         self.data_dir.mkdir(exist_ok=True)
         fail_msg = f'Question of "{self.main_type}" type not supported'
-        assert self.main_type in list(TABLES_DICT.keys()) + ['mix'], fail_msg
+        assert self.main_type in list(TABLES_DICT.keys()), fail_msg
         self.generate_questions()
 
     def randomize_question(self):
@@ -94,7 +95,8 @@ class WorkSheetGenerator:
         return "".join(["_" for _ in range(first_row_char_len + padding)])
 
     def print_final_worksheet(self, number_of_columns=9):
-        LOGGER.info(f'Worksheet for Amaya : {len(self.final_questions_list)}')
+        LOGGER.info(f'{TABLES_DICT[self.main_type].capitalize()} Worksheet'
+                    f' : {len(self.final_questions_list)}')
         split_list = self.chunks(self.final_questions_list, number_of_columns)
         table = Table(show_header=False, header_style="bold magenta", padding=2)
         num_of_columns = len(split_list[0]) * 1
@@ -122,13 +124,18 @@ class WorkSheetGenerator:
             self.final_questions_list = list()
         x_range = range(self.start_num, self.end_num + 1)
         y_range = range(self.start_num, self.end_num + 1)
+        temp_tables_dict = TABLES_DICT.copy()
+        temp_tables_dict.pop('mix')
         if self.main_type == 'x' and self.tables:
             y_range = range(2, 11)
 
         while len(self.final_questions_list) < self.num_questions:
             i = choice(x_range)
             j = choice(y_range)
-            _type = self.main_type if self.main_type != 'mix' else choice(list(TABLES_DICT.keys()))
+            if self.main_type != 'mix':
+                _type = self.main_type
+            else:
+                _type = choice(list(temp_tables_dict.keys()))
             first_row_spaces, second_row_spaces = self.__calc_spaces(i, j)
             tmp_equation = '\n'.join([f'{first_row_spaces}{i}',
                                       f'{_type}{second_row_spaces}{j}',
@@ -141,27 +148,29 @@ class WorkSheetGenerator:
 
 
 @click.command()
-@click.option('-t', '--type', default='+',
-              type=click.Choice(['+', '-', 'x', 'mix']),
-              multiple=False,
+@click.option('-t', '--type', default='+', type=click.Choice(['+', '-', 'x', 'mix']),
+              multiple=False, prompt='What type of calculation?',
               help='type of calculation: '
                    '+: Addition; '
                    '-: Subtraction; '
                    'x: Multiplication; '
                    'mix: Mixed; '
                    '(default: +)')
-@click.option('-q', '--questions', is_flag=False, default=90,
+@click.option('-q', '--questions', is_flag=False, default=20,
+              prompt='Number of questions to generate?',
               help='Number of questions to generate')
-@click.option('--start_num', is_flag=False, default=1000,
+@click.option('--start_num', is_flag=False, default=99, prompt='Starting number for questions',
               help='Starting number for questions')
-@click.option('--end_num', is_flag=False, default=3000,
+@click.option('--end_num', is_flag=False, default=999, prompt='Ending number for questions: ',
               help='Ending number for questions')
 @click.option('--tables', is_flag=True, default=True,
               help='Flag to enable double-digit multiplication')
 @click.help_option('-h', '--help')
 def cli(type, questions, start_num, end_num, tables):
     """
-    A CLI app for creating HTML & PDF math worksheets
+    A CLI app for creating HTML & PDF math worksheets\n
+     -----\n
+    More information: https://github.com/abakhru/math-worksheet-generator
     """
     WorkSheetGenerator(type, num_questions=questions,
                        start_num=start_num, end_num=end_num, tables=tables)
