@@ -28,6 +28,8 @@ Options:
   --tables                 Flag to enable double-digit multiplication
   -h, --help               Show this message and exit.
 ```
+- generate 10 double-digit multiplication questions starting from 12 to 99
+![Double-digit multiplication](example/screenshot_multiplication.png)
 
 ### TODO
 - [ ] division worksheet support
