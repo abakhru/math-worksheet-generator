@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "math-worksheet-generator"
+version = "0.1.0"
+description = "Math Worksheet Generator for Kids"
+authors = ["abakhru <bakhru@me.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+rich = "*"
+click = "*"
+arrow = "*"
+numpy = "*"
+weasyprint = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

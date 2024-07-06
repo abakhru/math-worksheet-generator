@@ -1,5 +1,0 @@
-rich
-click
-arrow
-numpy
-WeasyPrint
