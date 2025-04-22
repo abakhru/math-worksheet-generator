@@ -1,19 +1,22 @@
-[tool.poetry]
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+
+[project]
+authors = [
+    {name = "abakhru", email = "bakhru@me.com"},
+]
+license = {text = "MIT"}
+requires-python = "<4.0,>=3.12"
+dependencies = [
+    "rich",
+    "click",
+    "arrow",
+    "numpy",
+    "weasyprint",
+]
 name = "math-worksheet-generator"
 version = "0.1.0"
 description = "Math Worksheet Generator for Kids"
-authors = ["abakhru <bakhru@me.com>"]
-license = "MIT"
 readme = "README.md"
-
-[tool.poetry.dependencies]
-python = "^3.12"
-rich = "*"
-click = "*"
-arrow = "*"
-numpy = "*"
-weasyprint = "*"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
