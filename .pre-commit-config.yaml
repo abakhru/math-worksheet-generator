@@ -1,0 +1,61 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-case-conflict
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: debug-statements
+      - id: check-merge-conflict
+      - id: check-json
+      - id: check-toml
+      - id: detect-private-key
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.21.2
+    hooks:
+      - id: pyupgrade
+        args: [--py314-plus]
+  - repo: local
+    hooks:
+      - id: gitleaks
+        name: Gitleaks
+        entry: gitleaks
+        args: [
+          "--config=.gitleaks.toml",
+          "--verbose",
+          "dir",
+          "."
+        ]
+        language: system
+        pass_filenames: false
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.6
+    hooks:
+      - id: ruff-check
+        args: [--fix]
+      - id: ruff-format
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.10.10
+    hooks:
+      - id: uv-lock
+  - repo: https://github.com/NSPBot911/ty-pre-commit
+    rev: v0.0.23
+    hooks:
+      - id: ty-check
+        files: src/.+\.py$
+        exclude: src/api_tests/framework/
+        args:
+          - --python=.venv
+  - repo: local
+    hooks:
+      - id: osv-scanner
+        name: OSV Scanner
+        entry: osv-scanner
+        args:
+          - scan
+          - --format=table
+          - .
+        language: system

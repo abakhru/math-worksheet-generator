@@ -1,14 +1,13 @@
-[build-system]
-requires = ["pdm-backend"]
-build-backend = "pdm.backend"
-
-
 [project]
+name = "math-worksheet-generator"
+version = "0.1.2"
+description = "Math Worksheet Generator for Kids"
+readme = "README.md"
 authors = [
     {name = "abakhru", email = "bakhru@me.com"},
 ]
 license = {text = "MIT"}
-requires-python = "<4.0,>=3.12"
+requires-python = ">=3.14"
 dependencies = [
     "rich",
     "click",
@@ -16,7 +15,10 @@ dependencies = [
     "numpy",
     "weasyprint",
 ]
-name = "math-worksheet-generator"
-version = "0.1.0"
-description = "Math Worksheet Generator for Kids"
-readme = "README.md"
+
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "ruff",
+]

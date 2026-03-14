@@ -1,0 +1,122 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+@supports (padding: max(0px)) {
+  body {
+    padding-left: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
+    padding-top: max(12px, env(safe-area-inset-top));
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+  }
+}
+
+/* Theme variables */
+:root {
+  /* Candy (default) */
+  --bg-primary: #fff5f7;
+  --bg-secondary: #ffe0eb;
+  --accent-1: #ff6b9d;
+  --accent-2: #ffc75f;
+  --accent-3: #845ec2;
+  --text-primary: #2d1b3d;
+  --text-secondary: #555;
+  --success: #00d084;
+  --error: #ff6b6b;
+  --warning: #ffb627;
+}
+
+body.theme-space {
+  --bg-primary: #0a0e27;
+  --bg-secondary: #1a1f3a;
+  --accent-1: #00d9ff;
+  --accent-2: #ffd700;
+  --accent-3: #ff006e;
+  --text-primary: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --success: #00ff41;
+  --error: #ff006e;
+  --warning: #ffd700;
+}
+
+body.theme-jungle {
+  --bg-primary: #1b4332;
+  --bg-secondary: #2d6a4f;
+  --accent-1: #40916c;
+  --accent-2: #ffeb3b;
+  --accent-3: #f1faee;
+  --text-primary: #f1faee;
+  --text-secondary: #d1e7dd;
+  --success: #52b788;
+  --error: #ff6b6b;
+  --warning: #ffeb3b;
+}
+
+body.theme-underwater {
+  --bg-primary: #0f3460;
+  --bg-secondary: #16213e;
+  --accent-1: #00d4ff;
+  --accent-2: #ff5e78;
+  --accent-3: #ffc107;
+  --text-primary: #e0e7ff;
+  --text-secondary: #b0bfff;
+  --success: #00ff88;
+  --error: #ff5e78;
+  --warning: #ffc107;
+}
+
+/* Global styles */
+button {
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  touch-action: manipulation;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+/* Utilities */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* No shake on iOS */
+@media (hover: none) and (pointer: coarse) {
+  button {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+  }
+}

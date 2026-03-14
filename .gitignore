@@ -122,3 +122,8 @@ data/
 *.brn
 *.html
 uv.lock
+
+# Game (Vite/React PWA)
+game/dist/
+game/node_modules/
+game/.vite/

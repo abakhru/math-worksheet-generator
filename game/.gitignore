@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+*.pnp
+*.pnp.js
+bun.lockb
+
+# Production
+dist/
+.env.local
+.env.*.local
+
+# Misc
+.DS_Store
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
