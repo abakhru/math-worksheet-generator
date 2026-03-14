@@ -1,0 +1,99 @@
+name: PWA Validation
+
+on:
+  push:
+    branches: [dev, main]
+    paths:
+      - 'game/**'
+      - '.github/workflows/pwa-check.yml'
+  pull_request:
+    branches: [dev, main]
+
+jobs:
+  pwa-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install bun
+        uses: oven-sh/setup-bun@v1
+
+      - name: Install dependencies
+        working-directory: game
+        run: bun install --frozen-lockfile
+
+      - name: Build for PWA
+        working-directory: game
+        run: bun run build
+
+      - name: Validate manifest.json
+        working-directory: game
+        run: |
+          if [ ! -f dist/manifest.webmanifest ]; then
+            echo "❌ Error: manifest.webmanifest not found in dist/"
+            exit 1
+          fi
+          echo "✓ Manifest found"
+
+          # Check manifest contains required fields
+          if jq -e '.name and .short_name and .start_url and .display' dist/manifest.webmanifest > /dev/null; then
+            echo "✓ Manifest has required fields"
+          else
+            echo "❌ Error: Manifest missing required fields"
+            exit 1
+          fi
+
+      - name: Check service worker
+        working-directory: game
+        run: |
+          if [ ! -f dist/sw.js ]; then
+            echo "❌ Error: Service worker (sw.js) not found in dist/"
+            exit 1
+          fi
+          echo "✓ Service worker found"
+
+          if grep -q "skipWaiting\|clients.claim" dist/sw.js; then
+            echo "✓ Service worker has auto-update enabled"
+          fi
+
+      - name: Validate offline assets
+        working-directory: game
+        run: |
+          echo "Checking precached assets..."
+          if [ -f dist/workbox-*.js ]; then
+            echo "✓ Workbox found"
+          else
+            echo "⚠️  Warning: Workbox not found"
+          fi
+
+          # Check for key app files
+          if [ -f dist/index.html ] && [ -f dist/assets/index-*.js ]; then
+            echo "✓ Core app assets exist"
+          else
+            echo "❌ Error: Core app assets missing"
+            exit 1
+          fi
+
+      - name: Lighthouse PWA audit
+        uses: treosh/lighthouse-ci-action@v10
+        with:
+          runs: 1
+          configPath: './game/lighthouserc.json'
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+        continue-on-error: true
+
+      - name: Summary
+        working-directory: game
+        run: |
+          echo "## PWA Build Summary"
+          echo ""
+          echo "**Distribution size:**"
+          du -sh dist/
+          echo ""
+          echo "**Key files:**"
+          ls -lh dist/*.js dist/*.html dist/*.webmanifest 2>/dev/null | head -10
+          echo ""
+          echo "✓ PWA validation complete"

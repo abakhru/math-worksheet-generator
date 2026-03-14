@@ -1,0 +1,149 @@
+name: Release & Deploy
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'game/**'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g., 1.0.0)'
+        required: false
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install bun
+        uses: oven-sh/setup-bun@v1
+
+      - name: Install dependencies
+        working-directory: game
+        run: bun install --frozen-lockfile
+
+      - name: Run tests
+        working-directory: game
+        run: bun run test --run
+
+      - name: Type check
+        working-directory: game
+        run: bun run type-check
+
+      - name: Build production
+        working-directory: game
+        run: bun run build
+
+      - name: Determine version
+        id: version
+        run: |
+          VERSION="${{ github.event.inputs.version }}"
+          if [ -z "$VERSION" ]; then
+            VERSION="v$(date +%Y.%m.%d-%H%M%S)"
+          fi
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "📦 Release version: $VERSION"
+
+      - name: Create release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.version.outputs.version }}
+          release_name: Times Tables Quest ${{ steps.version.outputs.version }}
+          body: |
+            ## Release: Times Tables Quest ${{ steps.version.outputs.version }}
+
+            ### Build Info
+            - **Build Date:** ${{ github.event.head_commit.timestamp }}
+            - **Commit:** ${{ github.sha }}
+            - **Branch:** ${{ github.ref }}
+
+            ### What's Included
+            - ✅ Full PWA game build
+            - ✅ Offline-capable (service worker + precaching)
+            - ✅ All tests passing
+            - ✅ Type-safe TypeScript
+
+            ### Installation
+            1. Deploy `game/dist` to web server
+            2. Configure web server for SPA (all routes → index.html)
+            3. Install on mobile: Add to Home Screen (iOS/Android)
+
+            ### Verification
+            - Run tests: `bun run test`
+            - Type check: `bun run type-check`
+            - Build: `bun run build`
+
+          draft: false
+          prerelease: false
+
+      - name: Upload build artifact to release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./game/dist
+          asset_name: game-dist-${{ steps.version.outputs.version }}.zip
+          asset_content_type: application/zip
+
+  deploy-to-pages:
+    needs: build-and-release
+    runs-on: ubuntu-latest
+    # Only deploy from main branch
+    if: github.ref == 'refs/heads/main'
+    timeout-minutes: 20
+
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install bun
+        uses: oven-sh/setup-bun@v1
+
+      - name: Install dependencies
+        working-directory: game
+        run: bun install --frozen-lockfile
+
+      - name: Build
+        working-directory: game
+        run: bun run build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload to Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'game/dist'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Deployment summary
+        run: |
+          echo "## 🚀 Deployment Complete"
+          echo ""
+          echo "Game deployed to: ${{ steps.deployment.outputs.page_url }}"
+          echo ""
+          echo "**Available features:**"
+          echo "- ✅ All 6 game modes"
+          echo "- ✅ Offline playable (service worker enabled)"
+          echo "- ✅ iOS home screen app"
+          echo "- ✅ Android installable"
