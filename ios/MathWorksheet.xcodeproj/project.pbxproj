@@ -1,0 +1,349 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		22127B85D2BEB883055D0747 /* ProblemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DA09FE217423B2DBC49AC8 /* ProblemCell.swift */; };
+		325E76A81EE56A9687CF0B1A /* MathProblem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05322A182E92740F9E06C479 /* MathProblem.swift */; };
+		45BCCF7E2C03C8A4228D7852 /* WorksheetGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C362724A551F20133A51F9F5 /* WorksheetGenerator.swift */; };
+		B90F5E551F9A37893EC04D1E /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7851403722E6A930B67D6C3A /* App.swift */; };
+		BE26C4EE94D26BE79A5E7851 /* PDFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DB7EF0BFBB2E1B0B261CD4 /* PDFGenerator.swift */; };
+		E3D06C72348FDAB4E26FFC22 /* WorksheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141D9EBC33C5EC39DB65FE60 /* WorksheetView.swift */; };
+		EBF2F70231A63DF5AC2A8B26 /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECFC85059AD2A6154BA4740 /* ConfigView.swift */; };
+		ED0D3688B967D0149A9B363F /* WorksheetConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F0FEC2C9AACC48526EB58 /* WorksheetConfig.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		05322A182E92740F9E06C479 /* MathProblem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathProblem.swift; sourceTree = "<group>"; };
+		141D9EBC33C5EC39DB65FE60 /* WorksheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorksheetView.swift; sourceTree = "<group>"; };
+		37DB7EF0BFBB2E1B0B261CD4 /* PDFGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFGenerator.swift; sourceTree = "<group>"; };
+		7851403722E6A930B67D6C3A /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		802F0FEC2C9AACC48526EB58 /* WorksheetConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorksheetConfig.swift; sourceTree = "<group>"; };
+		91AC9B8B379DA0869A5D5D02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C362724A551F20133A51F9F5 /* WorksheetGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorksheetGenerator.swift; sourceTree = "<group>"; };
+		DECFC85059AD2A6154BA4740 /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
+		E1DA09FE217423B2DBC49AC8 /* ProblemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemCell.swift; sourceTree = "<group>"; };
+		EBC9E71E0B25390B91C71B8A /* MathWorksheet.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = MathWorksheet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		2F6944472689BEE094C6E902 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DECFC85059AD2A6154BA4740 /* ConfigView.swift */,
+				E1DA09FE217423B2DBC49AC8 /* ProblemCell.swift */,
+				141D9EBC33C5EC39DB65FE60 /* WorksheetView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		360CAB0CA095A0D7E5CBC5C2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EBC9E71E0B25390B91C71B8A /* MathWorksheet.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3956C03EA8B582B1B52DA0A7 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				37DB7EF0BFBB2E1B0B261CD4 /* PDFGenerator.swift */,
+				C362724A551F20133A51F9F5 /* WorksheetGenerator.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		7A37C0C834A130CC7FEC8582 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		88831B4C9FB4A399B0B4C62D /* MathWorksheet */ = {
+			isa = PBXGroup;
+			children = (
+				7851403722E6A930B67D6C3A /* App.swift */,
+				91AC9B8B379DA0869A5D5D02 /* Info.plist */,
+				9358EAC302ECD9E5ADA4CEB3 /* Models */,
+				7A37C0C834A130CC7FEC8582 /* Resources */,
+				3956C03EA8B582B1B52DA0A7 /* Services */,
+				2F6944472689BEE094C6E902 /* Views */,
+			);
+			name = MathWorksheet;
+			path = Sources/MathWorksheet;
+			sourceTree = "<group>";
+		};
+		9358EAC302ECD9E5ADA4CEB3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				05322A182E92740F9E06C479 /* MathProblem.swift */,
+				802F0FEC2C9AACC48526EB58 /* WorksheetConfig.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B339CD5F0BBC39F43636084F = {
+			isa = PBXGroup;
+			children = (
+				88831B4C9FB4A399B0B4C62D /* MathWorksheet */,
+				360CAB0CA095A0D7E5CBC5C2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		018DD5D9292F408AE31C8D76 /* MathWorksheet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B730BA8D3985EB02CEDC2401 /* Build configuration list for PBXNativeTarget "MathWorksheet" */;
+			buildPhases = (
+				46ACBFD36936A81136CFA098 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MathWorksheet;
+			packageProductDependencies = (
+			);
+			productName = MathWorksheet;
+			productReference = EBC9E71E0B25390B91C71B8A /* MathWorksheet.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5756805F081D5A1698AEFE27 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = 8A84CD0BEEB7A5E79495A25A /* Build configuration list for PBXProject "MathWorksheet" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = B339CD5F0BBC39F43636084F;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 360CAB0CA095A0D7E5CBC5C2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				018DD5D9292F408AE31C8D76 /* MathWorksheet */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		46ACBFD36936A81136CFA098 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B90F5E551F9A37893EC04D1E /* App.swift in Sources */,
+				EBF2F70231A63DF5AC2A8B26 /* ConfigView.swift in Sources */,
+				325E76A81EE56A9687CF0B1A /* MathProblem.swift in Sources */,
+				BE26C4EE94D26BE79A5E7851 /* PDFGenerator.swift in Sources */,
+				22127B85D2BEB883055D0747 /* ProblemCell.swift in Sources */,
+				ED0D3688B967D0149A9B363F /* WorksheetConfig.swift in Sources */,
+				45BCCF7E2C03C8A4228D7852 /* WorksheetGenerator.swift in Sources */,
+				E3D06C72348FDAB4E26FFC22 /* WorksheetView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1377D022C3BB442201415F19 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Sources/MathWorksheet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mathworksheet.app;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6016406CCFD61DF5EB6EE2B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		E194592920FCB8492F47C65F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		F80724891369ACF491149CD6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Sources/MathWorksheet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mathworksheet.app;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8A84CD0BEEB7A5E79495A25A /* Build configuration list for PBXProject "MathWorksheet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6016406CCFD61DF5EB6EE2B0 /* Debug */,
+				E194592920FCB8492F47C65F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B730BA8D3985EB02CEDC2401 /* Build configuration list for PBXNativeTarget "MathWorksheet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F80724891369ACF491149CD6 /* Debug */,
+				1377D022C3BB442201415F19 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5756805F081D5A1698AEFE27 /* Project object */;
+}

@@ -76,7 +76,9 @@
   border-radius: 12px;
   text-align: center;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
   min-height: 120px;
   display: flex;
   flex-direction: column;

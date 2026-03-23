@@ -12,13 +12,13 @@ describe('progressStore', () => {
   })
 
   it('initializes all tables', () => {
-    const progress = useProgressStore((s) => s.progress)
+    const progress = useProgressStore.getState().progress
     expect(progress[2]).toBeDefined()
     expect(progress[12]).toBeDefined()
   })
 
   it('initializes table with zero progress', () => {
-    const progress = useProgressStore((s) => s.progress)
+    const progress = useProgressStore.getState().progress
     expect(progress[2].masteryPoints).toBe(0)
     expect(progress[2].stars).toBe(0)
     expect(progress[2].bossDefeated).toBe(false)
@@ -30,7 +30,7 @@ describe('progressStore', () => {
       stars: 1,
     })
 
-    const progress = useProgressStore((s) => s.progress)
+    const progress = useProgressStore.getState().progress
     expect(progress[3].masteryPoints).toBe(100)
     expect(progress[3].stars).toBe(1)
   })
@@ -38,7 +38,7 @@ describe('progressStore', () => {
   it('adds mastery points and updates stars', () => {
     useProgressStore.getState().addMasteryPoints(4, 200)
 
-    const progress = useProgressStore((s) => s.progress)
+    const progress = useProgressStore.getState().progress
     expect(progress[4].masteryPoints).toBe(200)
     expect(progress[4].stars).toBe(1)
   })
@@ -47,32 +47,32 @@ describe('progressStore', () => {
     const store = useProgressStore.getState()
 
     store.addMasteryPoints(5, 400)
-    let progress = useProgressStore((s) => s.progress)
+    let progress = useProgressStore.getState().progress
     expect(progress[5].stars).toBe(2)
 
     store.addMasteryPoints(5, 200) // Total 600
-    progress = useProgressStore((s) => s.progress)
+    progress = useProgressStore.getState().progress
     expect(progress[5].stars).toBe(3)
 
     store.addMasteryPoints(5, 400) // Total 1000
-    progress = useProgressStore((s) => s.progress)
+    progress = useProgressStore.getState().progress
     expect(progress[5].stars).toBe(5)
   })
 
   it('unlocks achievements', () => {
     useProgressStore.getState().unlockAchievement('first-answer')
 
-    const achievements = useProgressStore((s) => s.achievements)
+    const achievements = useProgressStore.getState().achievements
     expect(achievements['first-answer']).toBeDefined()
   })
 
   it('doesnt duplicate achievement unlocks', () => {
     const store = useProgressStore.getState()
     store.unlockAchievement('streak-3')
-    const time1 = useProgressStore((s) => s.achievements['streak-3'])
+    const time1 = useProgressStore.getState().achievements['streak-3']
 
     store.unlockAchievement('streak-3')
-    const time2 = useProgressStore((s) => s.achievements['streak-3'])
+    const time2 = useProgressStore.getState().achievements['streak-3']
 
     expect(time1).toEqual(time2)
   })
@@ -80,7 +80,7 @@ describe('progressStore', () => {
   it('adds daily medals by date', () => {
     useProgressStore.getState().addDailyMedal('2026-03-14')
 
-    const medals = useProgressStore((s) => s.dailyMedals)
+    const medals = useProgressStore.getState().dailyMedals
     expect(medals['2026-03-14']).toBeDefined()
   })
 

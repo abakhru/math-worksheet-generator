@@ -65,7 +65,7 @@ describe('game flow integration', () => {
       session.markAnswered(true)
     }
 
-    const state = useSessionStore((s) => s)
+    const state = useSessionStore.getState()
     expect(state.streak).toBe(3)
     expect(state.comboMultiplier).toBe(4) // 1 -> 2 -> 3 -> 4
   })
@@ -84,7 +84,7 @@ describe('game flow integration', () => {
       session.markAnswered(true)
     }
 
-    let state = useSessionStore((s) => s)
+    let state = useSessionStore.getState()
     expect(state.comboMultiplier).toBe(5) // Capped at 5
 
     // Answer incorrectly
@@ -94,7 +94,7 @@ describe('game flow integration', () => {
     session.selectAnswer((mcq.correctIndex + 1) % 4)
     session.markAnswered(false)
 
-    state = useSessionStore((s) => s)
+    state = useSessionStore.getState()
     expect(state.comboMultiplier).toBe(1) // Reset
     expect(state.streak).toBe(0) // Reset
   })
@@ -115,8 +115,8 @@ describe('game flow integration', () => {
       session.takeDamage()
     }
 
-    const lives = useSessionStore((s) => s.lives)
-    expect(lives).toBe(0)
+    const state = useSessionStore.getState()
+    expect(state.lives).toBe(0)
   })
 
   it('boss battle damages boss HP', () => {
@@ -134,12 +134,12 @@ describe('game flow integration', () => {
       session.markAnswered(true)
 
       // Damage scales with combo
-      const combo = useSessionStore((s) => s.comboMultiplier)
+      const combo = useSessionStore.getState().comboMultiplier
       const damage = Math.min(1 + combo - 1, 4)
       session.damageToHP(damage)
     }
 
-    const hp = useSessionStore((s) => s.bossHP)
+    const hp = useSessionStore.getState().bossHP
     expect(hp).toBeLessThan(10)
   })
 
@@ -236,7 +236,7 @@ describe('game flow integration', () => {
 
       if (isCorrect) {
         const points = getBasePoints('practice', 5)
-        const combo = useSessionStore((s) => s.comboMultiplier)
+        const combo = useSessionStore.getState().comboMultiplier
         const xp = calculateXP(points, combo)
         player.addXP(xp)
         progress.addMasteryPoints(5, points)
@@ -244,14 +244,14 @@ describe('game flow integration', () => {
     }
 
     // Verify results
-    const finalSession = useSessionStore((s) => s)
+    const finalSession = useSessionStore.getState()
     expect(finalSession.questionsAnswered).toBe(10)
     expect(finalSession.correctAnswers).toBe(correctCount)
 
-    const finalPlayer = usePlayerStore((s) => s.player)
+    const finalPlayer = usePlayerStore.getState().player
     expect(finalPlayer!.totalXP).toBeGreaterThan(startXP)
 
-    const finalMastery = useProgressStore((s) => s.progress[5].masteryPoints)
+    const finalMastery = useProgressStore.getState().progress[5].masteryPoints
     expect(finalMastery).toBeGreaterThan(startMastery)
   })
 })

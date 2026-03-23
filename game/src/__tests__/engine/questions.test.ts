@@ -124,9 +124,7 @@ describe('questions engine', () => {
       const questions2 = generateDailyQuestions('2026-03-15')
 
       // At least some questions should be different
-      const different = questions1.filter(
-        (q, i) => q.answer !== questions2[i].answer
-      ).length
+      const different = questions1.filter((q, i) => q.answer !== questions2[i].answer).length
       expect(different).toBeGreaterThan(0)
     })
 

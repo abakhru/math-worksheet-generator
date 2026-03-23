@@ -13,7 +13,9 @@ function App() {
   const initializePlayer = usePlayerStore((s) => s.initializePlayer)
   const initializeProgress = useProgressStore((s) => s.initializeProgress)
   const [currentScreen, setCurrentScreen] = useState<Screen>('home')
-  const [gameMode, setGameMode] = useState<'practice' | 'explorer' | 'daily' | 'speedrun' | 'survival' | 'boss' | null>(null)
+  const [gameMode, setGameMode] = useState<
+    'practice' | 'explorer' | 'daily' | 'speedrun' | 'survival' | 'boss' | null
+  >(null)
   const [selectedTable, setSelectedTable] = useState<number>(2)
 
   // Initialize stores on first load
@@ -31,7 +33,10 @@ function App() {
     }
   }, [player?.themeId])
 
-  const handleStartGame = (mode: 'practice' | 'explorer' | 'daily' | 'speedrun' | 'survival' | 'boss', table: number) => {
+  const handleStartGame = (
+    mode: 'practice' | 'explorer' | 'daily' | 'speedrun' | 'survival' | 'boss',
+    table: number
+  ) => {
     setGameMode(mode)
     setSelectedTable(table)
     setCurrentScreen('game')
@@ -45,7 +50,10 @@ function App() {
   return (
     <div className="app">
       {currentScreen === 'home' && (
-        <HomeScreen onStartGame={handleStartGame} onProfileClick={() => setCurrentScreen('profile')} />
+        <HomeScreen
+          onStartGame={handleStartGame}
+          onProfileClick={() => setCurrentScreen('profile')}
+        />
       )}
       {currentScreen === 'game' && gameMode && (
         <GameScreen mode={gameMode} table={selectedTable} onComplete={handleGameComplete} />

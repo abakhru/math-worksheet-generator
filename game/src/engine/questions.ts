@@ -13,11 +13,7 @@ export function dateToSeed(dateStr: string): number {
   return parseInt(dateStr.replace(/-/g, ''))
 }
 
-export function generateQuestion(
-  table: number,
-  mode: GameMode,
-  seed?: number
-): Question {
+export function generateQuestion(table: number, mode: GameMode, seed?: number): Question {
   let rng = Math.random
   if (seed !== undefined) {
     const generator = mulberry32(seed + Math.floor(Math.random() * 1000))
@@ -34,10 +30,7 @@ export function generateQuestion(
   }
 }
 
-export function generateMultipleChoiceQuestion(
-  q: Question,
-  seed?: number
-): MultipleChoiceQuestion {
+export function generateMultipleChoiceQuestion(q: Question, seed?: number): MultipleChoiceQuestion {
   let rng = Math.random
   if (seed !== undefined) {
     const generator = mulberry32(seed)

@@ -127,3 +127,12 @@ uv.lock
 game/dist/
 game/node_modules/
 game/.vite/
+
+# iOS / Xcode
+ios/*.xcodeproj/project.xcworkspace/
+ios/*.xcodeproj/xcuserdata/
+ios/*.xcworkspace/xcuserdata/
+ios/DerivedData/
+ios/*.ipa
+ios/*.dSYM.zip
+ios/*.dSYM

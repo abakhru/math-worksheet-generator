@@ -172,11 +172,7 @@ export function checkAchievements(
   }
 
   // Speed run
-  if (
-    !unlockedAchievements.has('speedrun-beat') &&
-    stats.mode === 'speedrun' &&
-    stats.correct
-  ) {
+  if (!unlockedAchievements.has('speedrun-beat') && stats.mode === 'speedrun' && stats.correct) {
     checks.push({ id: 'speedrun-beat', shouldUnlock: true })
   }
 
@@ -190,10 +186,7 @@ export function checkAchievements(
   }
 
   // Boss
-  if (
-    !unlockedAchievements.has('boss-slayer') &&
-    stats.bossDefeated
-  ) {
+  if (!unlockedAchievements.has('boss-slayer') && stats.bossDefeated) {
     checks.push({ id: 'boss-slayer', shouldUnlock: true })
   }
 

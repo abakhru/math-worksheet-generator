@@ -4,7 +4,10 @@ import { getUnlockedTables } from '@/engine/mastery'
 import './screens.css'
 
 interface HomeScreenProps {
-  onStartGame: (mode: 'practice' | 'explorer' | 'daily' | 'speedrun' | 'survival' | 'boss', table: number) => void
+  onStartGame: (
+    mode: 'practice' | 'explorer' | 'daily' | 'speedrun' | 'survival' | 'boss',
+    table: number
+  ) => void
   onProfileClick: () => void
 }
 

@@ -30,11 +30,7 @@ export function getNextTableToUnlock(progress: Record<number, any>): number | nu
 }
 
 // Mode unlock requirements
-export function isModeUnlocked(
-  mode: GameMode,
-  level: number,
-  maxTableStars: number
-): boolean {
+export function isModeUnlocked(mode: GameMode, level: number, maxTableStars: number): boolean {
   switch (mode) {
     case 'practice':
     case 'explorer':

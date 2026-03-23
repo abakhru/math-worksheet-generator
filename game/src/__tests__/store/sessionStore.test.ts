@@ -53,7 +53,7 @@ describe('sessionStore', () => {
 
   it('selects answer', () => {
     useSessionStore.getState().selectAnswer(2)
-    const selected = useSessionStore((s) => s.selectedAnswer)
+    const selected = useSessionStore.getState().selectedAnswer
 
     expect(selected).toBe(2)
   })
@@ -94,13 +94,13 @@ describe('sessionStore', () => {
       useSessionStore.getState().markAnswered(true)
     }
 
-    const combo = useSessionStore((s) => s.comboMultiplier)
+    const combo = useSessionStore.getState().comboMultiplier
     expect(combo).toBe(5)
   })
 
   it('updates timer', () => {
     useSessionStore.getState().updateTimer(45)
-    const time = useSessionStore((s) => s.timeRemaining)
+    const time = useSessionStore.getState().timeRemaining
 
     expect(time).toBe(45)
   })
@@ -109,7 +109,7 @@ describe('sessionStore', () => {
     useSessionStore.getState().startSession('survival', 2)
     useSessionStore.getState().takeDamage()
 
-    const lives = useSessionStore((s) => s.lives)
+    const lives = useSessionStore.getState().lives
     expect(lives).toBe(2)
   })
 
@@ -119,7 +119,7 @@ describe('sessionStore', () => {
       useSessionStore.getState().takeDamage()
     }
 
-    const lives = useSessionStore((s) => s.lives)
+    const lives = useSessionStore.getState().lives
     expect(lives).toBe(0)
   })
 
@@ -128,7 +128,7 @@ describe('sessionStore', () => {
     useSessionStore.getState().takeDamage()
     useSessionStore.getState().restoreLive()
 
-    const lives = useSessionStore((s) => s.lives)
+    const lives = useSessionStore.getState().lives
     expect(lives).toBe(3)
   })
 
@@ -138,7 +138,7 @@ describe('sessionStore', () => {
       useSessionStore.getState().restoreLive()
     }
 
-    const lives = useSessionStore((s) => s.lives)
+    const lives = useSessionStore.getState().lives
     expect(lives).toBe(3)
   })
 
@@ -146,7 +146,7 @@ describe('sessionStore', () => {
     useSessionStore.getState().startSession('boss', 2)
     useSessionStore.getState().damageToHP(3)
 
-    const hp = useSessionStore((s) => s.bossHP)
+    const hp = useSessionStore.getState().bossHP
     expect(hp).toBe(7)
   })
 
@@ -154,7 +154,7 @@ describe('sessionStore', () => {
     useSessionStore.getState().startSession('boss', 2)
     useSessionStore.getState().damageToHP(20)
 
-    const hp = useSessionStore((s) => s.bossHP)
+    const hp = useSessionStore.getState().bossHP
     expect(hp).toBe(0)
   })
 
@@ -166,14 +166,14 @@ describe('sessionStore', () => {
       useSessionStore.getState().markAnswered(true)
     }
 
-    const state1 = useSessionStore((s) => s)
+    const state1 = useSessionStore.getState()
     expect(state1.streak).toBe(3)
     expect(state1.comboMultiplier).toBe(4)
 
     // Wrong answer resets both
     useSessionStore.getState().markAnswered(false)
 
-    const state2 = useSessionStore((s) => s)
+    const state2 = useSessionStore.getState()
     expect(state2.streak).toBe(0)
     expect(state2.comboMultiplier).toBe(1)
   })

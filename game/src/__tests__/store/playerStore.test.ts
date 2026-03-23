@@ -7,13 +7,13 @@ describe('playerStore', () => {
   })
 
   it('initializes with null player', () => {
-    const player = usePlayerStore((s) => s.player)
+    const player = usePlayerStore.getState().player
     expect(player).toBeNull()
   })
 
   it('initializes player with default values', () => {
     usePlayerStore.getState().initializePlayer('Alice')
-    const player = usePlayerStore((s) => s.player)
+    const player = usePlayerStore.getState().player
 
     expect(player).not.toBeNull()
     expect(player?.name).toBe('Alice')
@@ -26,10 +26,10 @@ describe('playerStore', () => {
 
   it('generates unique player ID', () => {
     usePlayerStore.getState().initializePlayer('Bob')
-    const id1 = usePlayerStore((s) => s.player?.id)
+    const id1 = usePlayerStore.getState().player?.id
 
     usePlayerStore.getState().initializePlayer('Carol')
-    const id2 = usePlayerStore((s) => s.player?.id)
+    const id2 = usePlayerStore.getState().player?.id
 
     expect(id1).not.toEqual(id2)
   })
@@ -37,7 +37,7 @@ describe('playerStore', () => {
   it('updates player name', () => {
     usePlayerStore.getState().initializePlayer('Player')
     usePlayerStore.getState().updateName('NewName')
-    const name = usePlayerStore((s) => s.player?.name)
+    const name = usePlayerStore.getState().player?.name
 
     expect(name).toBe('NewName')
   })
@@ -45,7 +45,7 @@ describe('playerStore', () => {
   it('updates avatar', () => {
     usePlayerStore.getState().initializePlayer('Player')
     usePlayerStore.getState().updateAvatar(5)
-    const avatar = usePlayerStore((s) => s.player?.avatarId)
+    const avatar = usePlayerStore.getState().player?.avatarId
 
     expect(avatar).toBe(5)
   })
@@ -53,7 +53,7 @@ describe('playerStore', () => {
   it('updates theme', () => {
     usePlayerStore.getState().initializePlayer('Player')
     usePlayerStore.getState().updateTheme('space')
-    const theme = usePlayerStore((s) => s.player?.themeId)
+    const theme = usePlayerStore.getState().player?.themeId
 
     expect(theme).toBe('space')
   })
@@ -62,7 +62,7 @@ describe('playerStore', () => {
     usePlayerStore.getState().initializePlayer('Player')
     usePlayerStore.getState().addXP(100)
 
-    const player = usePlayerStore((s) => s.player)
+    const player = usePlayerStore.getState().player
     expect(player?.totalXP).toBe(100)
     expect(player?.level).toBeGreaterThan(1)
   })
@@ -71,7 +71,7 @@ describe('playerStore', () => {
     usePlayerStore.getState().initializePlayer('Player')
     usePlayerStore.getState().updateSettings({ soundEnabled: false })
 
-    const settings = usePlayerStore((s) => s.player?.settings)
+    const settings = usePlayerStore.getState().player?.settings
     expect(settings?.soundEnabled).toBe(false)
     expect(settings?.hapticEnabled).toBe(true)
   })

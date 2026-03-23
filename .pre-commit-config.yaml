@@ -32,17 +32,17 @@ repos:
         language: system
         pass_filenames: false
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.15.6
+    rev: v0.15.7
     hooks:
       - id: ruff-check
         args: [--fix]
       - id: ruff-format
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.10.10
+    rev: 0.10.12
     hooks:
       - id: uv-lock
   - repo: https://github.com/NSPBot911/ty-pre-commit
-    rev: v0.0.23
+    rev: v0.0.24
     hooks:
       - id: ty-check
         files: src/.+\.py$
@@ -56,6 +56,8 @@ repos:
         entry: osv-scanner
         args:
           - scan
+          - source
+          - --recursive
           - --format=table
           - .
         language: system
