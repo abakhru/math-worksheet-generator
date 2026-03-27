@@ -7,6 +7,7 @@ import {
   canFightBoss,
   getMasteryInfo,
 } from '@/engine/mastery'
+import { TableProgress } from '@/types'
 
 const ALL_TABLES = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
@@ -30,7 +31,7 @@ describe('mastery engine', () => {
     })
 
     it('unlocks tables sequentially', () => {
-      const progress: Record<number, any> = {
+      const progress: Record<number, Partial<TableProgress>> = {
         2: { stars: 2 },
         3: { stars: 1 },
       }
@@ -65,7 +66,7 @@ describe('mastery engine', () => {
 
   describe('getNextTableToUnlock', () => {
     it('returns null when all tables unlocked', () => {
-      const progress: Record<number, any> = {}
+      const progress: Record<number, Partial<TableProgress>> = {}
       ALL_TABLES.forEach((t, i) => {
         if (i === 0) {
           progress[t] = { stars: 2 }
@@ -77,7 +78,7 @@ describe('mastery engine', () => {
     })
 
     it('returns next locked table', () => {
-      const progress: Record<number, any> = {
+      const progress: Record<number, Partial<TableProgress>> = {
         2: { stars: 2 },
         5: { stars: 0 }, // Mark 5 as unlocked but not progressed
         10: { stars: 0 }, // Mark 10 as unlocked but not progressed
@@ -88,7 +89,7 @@ describe('mastery engine', () => {
     })
 
     it('skips always-unlocked tables in sequence', () => {
-      const progress: Record<number, any> = {
+      const progress: Record<number, Partial<TableProgress>> = {
         2: { stars: 2 },
         3: { stars: 2 },
         4: { stars: 2 },

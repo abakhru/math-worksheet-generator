@@ -4,7 +4,7 @@ import { useProgressStore } from '@/store/progressStore'
 import { useSessionStore } from '@/store/sessionStore'
 import { generateMultipleChoiceQuestion, generateQuestion } from '@/engine/questions'
 import { getBasePoints, calculateXP } from '@/engine/scoring'
-import { isTableUnlocked, getUnlockedTables } from '@/engine/mastery'
+import { getUnlockedTables } from '@/engine/mastery'
 
 describe('game flow integration', () => {
   beforeEach(() => {
@@ -189,7 +189,6 @@ describe('game flow integration', () => {
   })
 
   it('achievement unlocking through gameplay', () => {
-    const player = usePlayerStore.getState()
     const progress = useProgressStore.getState()
 
     // Unlock first-answer achievement

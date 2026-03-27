@@ -31,12 +31,6 @@ export function generateQuestion(table: number, mode: GameMode, seed?: number): 
 }
 
 export function generateMultipleChoiceQuestion(q: Question, seed?: number): MultipleChoiceQuestion {
-  let rng = Math.random
-  if (seed !== undefined) {
-    const generator = mulberry32(seed)
-    rng = generator
-  }
-
   const { answer } = q
   const distractors = new Set<number>()
 
@@ -64,7 +58,6 @@ export function generateMultipleChoiceQuestion(q: Question, seed?: number): Mult
   }
 
   const choices = [answer, ...Array.from(distractors)]
-  const correctIndex = 0
   const shuffled = shuffleArray([...choices], seed)
   const newCorrectIndex = shuffled.indexOf(answer)
 

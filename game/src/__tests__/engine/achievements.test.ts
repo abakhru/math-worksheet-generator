@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { checkAchievements, ALL_ACHIEVEMENTS } from '@/engine/achievements'
+import { TableProgress } from '@/types'
 
 describe('achievements engine', () => {
   describe('ALL_ACHIEVEMENTS', () => {
@@ -24,7 +25,7 @@ describe('achievements engine', () => {
 
   describe('checkAchievements', () => {
     const emptyUnlocked = new Set<string>()
-    const emptyProgress: Record<number, any> = {}
+    const emptyProgress: Record<number, Partial<TableProgress>> = {}
 
     it('unlocks first-answer on first correct', () => {
       const checks = checkAchievements(

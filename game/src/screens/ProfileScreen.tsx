@@ -1,5 +1,6 @@
 import { usePlayerStore } from '@/store/playerStore'
 import { useProgressStore } from '@/store/progressStore'
+import { Player } from '@/types'
 import './screens.css'
 
 interface ProfileScreenProps {
@@ -45,7 +46,7 @@ export default function ProfileScreen({ onBack }: ProfileScreenProps) {
               <button
                 key={theme}
                 className={`theme-btn ${player.themeId === theme ? 'active' : ''}`}
-                onClick={() => updateTheme(theme as any)}
+                onClick={() => updateTheme(theme as Player['themeId'])}
               >
                 {theme}
               </button>

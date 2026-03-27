@@ -81,12 +81,10 @@ export function calculateLevel(totalXP: number): number {
 // XP needed for next level
 export function xpToNextLevel(totalXP: number): number {
   const currentLevel = calculateLevel(totalXP)
-  let xpRequired = 100
   let accumulatedXP = 0
 
   for (let i = 1; i < currentLevel; i++) {
-    xpRequired = Math.round(100 * i * 0.75)
-    accumulatedXP += xpRequired
+    accumulatedXP += Math.round(100 * i * 0.75)
   }
 
   const nextXpRequired = Math.round(100 * currentLevel * 0.75)

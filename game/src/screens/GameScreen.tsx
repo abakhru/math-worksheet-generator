@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect } from 'react'
 import { useSessionStore } from '@/store/sessionStore'
 import { usePlayerStore } from '@/store/playerStore'
 import { useProgressStore } from '@/store/progressStore'
@@ -20,20 +20,17 @@ export default function GameScreen({ mode, table, onComplete }: GameScreenProps)
   const markAnswered = useSessionStore((s) => s.markAnswered)
   const addXP = usePlayerStore((s) => s.addXP)
   const addMasteryPoints = useProgressStore((s) => s.addMasteryPoints)
-  const [isLoading, setIsLoading] = useState(true)
+  const generateNextQuestion = useCallback(() => {
+    const q = generateQuestion(table, mode)
+    const mcQuestion = generateMultipleChoiceQuestion(q)
+    setQuestion(mcQuestion)
+  }, [table, mode, setQuestion])
 
   // Initialize session
   useEffect(() => {
     useSessionStore.getState().startSession(mode, table)
     generateNextQuestion()
-    setIsLoading(false)
-  }, [mode, table])
-
-  const generateNextQuestion = () => {
-    const q = generateQuestion(table, mode)
-    const mcQuestion = generateMultipleChoiceQuestion(q)
-    setQuestion(mcQuestion)
-  }
+  }, [mode, table, generateNextQuestion])
 
   const handleAnswerSelect = (selectedIdx: number) => {
     if (sessionState.answered) return
@@ -62,7 +59,7 @@ export default function GameScreen({ mode, table, onComplete }: GameScreenProps)
     }, 500)
   }
 
-  if (isLoading || !sessionState.currentQuestion) {
+  if (!sessionState.currentQuestion) {
     return <div className="screen game-screen loading">Loading...</div>
   }
 

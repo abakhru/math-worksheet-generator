@@ -1,4 +1,4 @@
-import { Achievement, GameMode } from '@/types'
+import { Achievement, GameMode, TableProgress } from '@/types'
 
 export const ALL_ACHIEVEMENTS: Achievement[] = [
   {
@@ -138,7 +138,7 @@ export function checkAchievements(
     a?: number
     b?: number
   },
-  progress: Record<number, any>,
+  progress: Record<number, Partial<TableProgress>>,
   unlockedAchievements: Set<string>
 ): AchievementCheck[] {
   const checks: AchievementCheck[] = []
@@ -191,7 +191,7 @@ export function checkAchievements(
   }
 
   // All bosses defeated
-  const allBossesDefeated = Object.values(progress).every((p: any) => p.bossDefeated)
+  const allBossesDefeated = Object.values(progress).every((p) => p.bossDefeated)
   if (!unlockedAchievements.has('all-bosses') && allBossesDefeated) {
     checks.push({ id: 'all-bosses', shouldUnlock: true })
   }
