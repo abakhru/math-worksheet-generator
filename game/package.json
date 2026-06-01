@@ -15,36 +15,39 @@
     "format": "prettier --write src"
   },
   "dependencies": {
-    "framer-motion": "^12.38.0",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
+    "framer-motion": "^12.40.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
     "vite-plugin-pwa": "^0.19.8",
-    "zustand": "^5.0.12"
+    "zustand": "^5.0.14"
   },
   "overrides": {
     "esbuild": "^0.25.0",
     "flatted": "^3.4.2",
     "serialize-javascript": "^7.0.3",
-    "brace-expansion": "5.0.5"
+    "brace-expansion": "5.0.6",
+    "@babel/plugin-transform-modules-systemjs": "^7.29.4",
+    "fast-uri": "^3.1.2",
+    "lodash": "^4.18.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
-    "@types/node": "^25.5.0",
-    "@types/react": "^19.2.14",
+    "@types/node": "^25.9.1",
+    "@types/react": "^19.2.15",
     "@types/react-dom": "^19.2.3",
-    "@typescript-eslint/eslint-plugin": "^8.57.2",
-    "@typescript-eslint/parser": "^8.57.2",
-    "@vitejs/plugin-react": "^6.0.1",
+    "@typescript-eslint/eslint-plugin": "^8.60.0",
+    "@typescript-eslint/parser": "^8.60.0",
+    "@vitejs/plugin-react": "^6.0.2",
     "@vitest/ui": "4.1.0",
-    "eslint": "^10.1.0",
+    "eslint": "^10.4.1",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "jsdom": "^29.0.1",
-    "prettier": "^3.8.1",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "jsdom": "^29.1.1",
+    "prettier": "^3.8.3",
     "typescript": "^5.9.3",
-    "vite": "^8.0.3",
-    "vitest": "^4.1.2"
+    "vite": "^8.0.16",
+    "vitest": "^4.1.8"
   }
 }
